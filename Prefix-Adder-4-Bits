@@ -1,0 +1,81 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 02.03.2024 00:09:08
+// Design Name: 
+// Module Name: Prefix_Adder_4_Bits
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+//sw[0], sw[1], sw[2], sw[3], sw[4], sw[5], sw[6], sw[7], sw[8] 
+//A1   , A2   , A3   , A4   , B1   , B2   , B3   ,B4    , CIN
+
+//LED0, LED1, LED2, LED3, LED4
+//S0  , S1  , S2  , S3  ,COUT
+
+module Prefix_Adder_4_Bits(
+    input [0:8]sw, //entradas
+    
+    output LED0, //salidas
+    output LED1,
+    output LED2,
+    output LED3,
+    output LED4
+    );
+    
+      logic C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32;
+    
+    //salidas
+    assign LED0 = C32;
+    assign LED1 = C31;
+    assign LED2 = C30;
+    assign LED3 = C29;
+    assign LED4 = C27;
+    
+    //entradas
+    assign C1 = sw[0] & sw[4];
+    assign C2 = sw[0] ^ sw[4];
+    assign C3 = sw[1] & sw[5];
+    assign C4 = sw[1] ^ sw[5];
+    assign C5 = sw[2] & sw[6];
+    assign C6 = sw[2] ^ sw[6];
+    assign C7 = sw[3] & sw[7];
+    assign C8 = sw[3] ^ sw[7];
+    
+    assign C9 = C5 & C8;
+    assign C10 = C9 | C7;
+    assign C11 = C8 & C6;
+    assign C12 = C3 & C6;
+    assign C13 = C12 | C5;
+    assign C14 = C6 & C4;
+    assign C15 = C1 & C4;
+    assign C16 = C3 | C15;
+    assign C17 = C2 & C4;
+    assign C18 = C2 & sw[8];
+    assign C19 = C1 | C18;
+    assign C20 = C10 | C21;
+    assign C21 = C11 & C13;
+    assign C22 = C11 & C14;
+    assign C23 = C13 | C24;
+    assign C24 = C14 & C19;
+    assign C25 = C16 | C26;
+    assign C26 = C17 & sw[8];
+    assign C27 = C20 | C28;
+    assign C28 = C22 & sw[8];
+    assign C29 = C8 ^ C23;
+    assign C30 = C6 ^ C25;
+    assign C31 = C4 ^ C19;
+    assign C32 = C2 ^ sw[8];
+    
+endmodule
